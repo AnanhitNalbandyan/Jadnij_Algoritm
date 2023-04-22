@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritms JavaScript</title>
+    <style>
+
+    </style>
+
+</head>
+<body>
+
+    <script>
+ class Queue {
+    constructor() {
+        this.MAX = 1000;
+        this.front = 0;
+        this.rear = -1;
+        this.a = new Array(this.MAX);
+    }
+
+    isEmpty() {
+        return (this.front > this.rear);
+    }
+
+    enqueue(x) {
+        if (this.rear >= (this.MAX - 1)) {
+            console.log("Queue Overflow");
+            return false;
+        } else {
+            this.a[++this.rear] = x;
+            console.log(x + " enqueued into queue");
+            return true;
+        }
+    }
+
+    dequeue() {
+        if (this.isEmpty()) {
+            console.log("Queue Underflow");
+            return 0;
+        } else {
+            let x = this.a[this.front++];
+            console.log(x + " dequeued from queue");
+            return x;
+        }
+    }
+
+    peek() {
+        if (this.isEmpty()) {
+            console.log("Queue Underflow");
+            return 0;
+        } else {
+            return this.a[this.front];
+        }
+    }
+
+    print() {
+        for (let i = this.front; i <= this.rear; i++) {
+            console.log(" " + this.a[i]);
+        }
+    }
+}
+
+// Driver code
+let queue = new Queue();
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+console.log(queue.dequeue() + " dequeued from queue");
+console.log("Front element is :" + queue.peek());
+console.log("Elements present in queue :");
+queue.print();
+        
+    </script>
+</body>
+</html>
